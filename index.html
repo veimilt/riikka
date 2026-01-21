@@ -44,23 +44,21 @@
           Tahoma, "Lucida Grande", "DejaVu Sans", "Segoe UI", system-ui,
           -apple-system, sans-serif;
 
+        --header-height: 70px;
+
         /* Colors - Light Theme (default) */
         --text-primary: #1a1a1a;
         --text-secondary: #3a3a3a;
         --bg-primary: #ede8e0;
+        --bg-primary-a: rgba(255, 255, 255, 0.8);
         --bg-secondary: #faf8f5;
         --bg-elevated: #fefdfb;
 
         /* Accent colors */
         --accent-primary: #3991a9;
         --accent-primary-hover: #2a7686;
-        --accent-secondary: #f0c285;
-        --accent-tertiary: #5fb3b3;
 
-        /* Semantic colors */
-        --success: #52a675;
-        --info: #5fb3b3;
-        --warning: #e8a959;
+        --accent-tertiary: #5fb3b3;
 
         /* UI elements */
         --border-color: rgba(0, 0, 0, 0.08);
@@ -87,11 +85,13 @@
         --text-primary: #e8e8e8;
         --text-secondary: #d7d7d7;
         --bg-primary: #1a1f2e;
+        --bg-primary-a: rgba(26, 31, 46, 0.9);
         --bg-secondary: #232936;
         --bg-elevated: #2d3548;
 
-        /* Accent colors adjusted for dark mode */
-        --accent-secondary: #f0b968;
+        --yellow1: #f9c784;
+        --yellow2: #edb163;
+
         /* --accent-tertiary: #4ab9b9; */
 
         /* UI elements */
@@ -116,11 +116,6 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        transition:
-          background-color 0.3s ease,
-          color 0.3s ease,
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
       }
 
       body {
@@ -148,7 +143,7 @@
       /* Header */
       header {
         width: 100%;
-        position: sticky;
+        position: fixed;
         top: 0;
         left: 0;
         z-index: 999;
@@ -156,6 +151,7 @@
         border-bottom: 1px solid var(--border-color);
         backdrop-filter: blur(12px);
         background-color: rgba(250, 248, 245, 0.9);
+        height: var(--header-height);
       }
 
       :root[data-theme="dark"] header {
@@ -205,6 +201,12 @@
         flex-grow: 1;
         display: flex;
         flex-direction: column;
+        margin-top: var(--header-height);
+        background-image:
+          linear-gradient(var(--bg-primary), var(--bg-primary-a)),
+          url("img/turquoise.webp");
+        background-size: cover;
+        background-attachment: fixed;
       }
 
       .lander {
@@ -252,8 +254,8 @@
         padding: 1rem 2rem;
         background: linear-gradient(
           135deg,
-          var(--accent-secondary) 0%,
-          #edb163 100%
+          var(--accent-tertiary),
+          var(--accent-tertiary)
         );
         color: #1a1a1a;
         font-weight: 600;
@@ -309,7 +311,7 @@
         cursor: pointer;
         background-color: var(--bg-secondary);
         border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-sm);
         font-size: 1rem;
         color: var(--text-secondary);
         letter-spacing: normal;
@@ -319,19 +321,18 @@
       }
 
       .tab-button:hover {
-        background-color: var(--overlay-light);
-        border-color: var(--accent-primary);
+        background-color: var(--accent-primary);
+        color: white;
       }
 
       .tab-button.active-button {
         background-color: var(--accent-primary);
         color: white;
-        border-color: var(--accent-primary);
       }
 
       .modal-content {
         position: relative;
-        transition: height 0.5s ease-in-out;
+        transition: height 0.5s ease-out;
       }
 
       .modal-panel {
@@ -485,45 +486,35 @@
         cursor: pointer;
         background-color: var(--bg-elevated);
         border: 1px solid var(--border-color);
+
         border-radius: var(--radius-md);
         font-size: 1rem;
         font-weight: 600;
         color: var(--text-primary);
         letter-spacing: -0.01em;
-        transition: all 0.2s ease;
         width: fit-content;
         margin-bottom: 1rem;
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      .view-profile.active #profile-back {
-        opacity: 1;
-        transform: translateY(0);
-        transition:
-          opacity 0.5s ease,
-          transform 0.5s ease,
-          background-color 0.2s ease;
+        transition: all 0.2s ease;
       }
 
       #profile-back:hover {
-        background-color: var(--overlay-light);
-        border-color: var(--accent-primary);
+        background-color: var(--accent-primary);
+        color: white;
       }
 
       .profile-details {
         background-color: var(--bg-elevated);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-lg);
-        padding: 2.5rem 0.5rem;
-        padding-bottom: 0.5rem;
+        padding: 2.5rem 0rem;
+        padding-bottom: 0;
         box-shadow: var(--shadow-sm);
         opacity: 0;
         transition: opacity 0.5s ease;
       }
 
       .details-content {
-        padding: 0 1.5rem;
+        padding: 0 2rem;
       }
 
       .view-profile.active .profile-details {
