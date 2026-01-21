@@ -92,7 +92,7 @@
 
         /* Accent colors adjusted for dark mode */
         --accent-secondary: #f0b968;
-        --accent-tertiary: #4ab9b9;
+        /* --accent-tertiary: #4ab9b9; */
 
         /* UI elements */
         --border-color: rgba(255, 255, 255, 0.1);
@@ -163,7 +163,7 @@
       }
 
       .headercontent {
-        max-width: 1400px;
+        max-width: 1333px;
         margin: 0 auto;
         height: 70px;
         display: flex;
@@ -209,9 +209,9 @@
 
       .lander {
         width: 100%;
-        max-width: 1400px;
+        max-width: 1333px;
         margin: 0 auto;
-        padding: 3rem 2rem;
+        padding: 3rem 1rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -292,6 +292,7 @@
         border-radius: var(--radius-lg);
         padding: 2rem;
         box-shadow: var(--shadow-sm);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
       }
 
       .tab-buttons {
@@ -343,6 +344,7 @@
         right: 0;
         height: fit-content;
         transition: opacity 0.5s ease;
+        padding-top: 1rem;
         padding-bottom: 3rem;
       }
 
@@ -405,7 +407,7 @@
         );
         border-radius: var(--radius-lg);
         padding: 2rem;
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
@@ -428,7 +430,7 @@
 
       .profiletext h3 {
         font-family: var(--font-heading);
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         font-weight: 600;
         color: white;
         margin: 0;
@@ -456,6 +458,7 @@
         transition: all 0.2s ease;
         text-align: center;
         box-shadow: var(--shadow-sm);
+        margin-top: 0.5rem;
       }
 
       #profile-readmore:hover {
@@ -505,17 +508,22 @@
 
       #profile-back:hover {
         background-color: var(--overlay-light);
+        border-color: var(--accent-primary);
       }
 
       .profile-details {
         background-color: var(--bg-elevated);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-lg);
-        padding: 2.5rem;
+        padding: 2.5rem 0.5rem;
+        padding-bottom: 0.5rem;
         box-shadow: var(--shadow-sm);
         opacity: 0;
-
         transition: opacity 0.5s ease;
+      }
+
+      .details-content {
+        padding: 0 1.5rem;
       }
 
       .view-profile.active .profile-details {
@@ -593,13 +601,10 @@
       .business-card {
         width: 100%;
         max-width: 500px;
-        aspect-ratio: 1.586 / 1;
         position: relative;
         border-radius: 16px;
         overflow: hidden;
-        box-shadow:
-          0 20px 60px rgba(0, 0, 0, 0.3),
-          0 0 0 1px rgba(255, 255, 255, 0.1);
+        box-shadow: var(--shadow-lg);
         background-color: #f5f5f5;
         margin-top: 2rem;
         opacity: 0;
@@ -751,6 +756,18 @@
       }
 
       @media (min-width: 768px) {
+        .info-section {
+          padding: 2rem;
+        }
+
+        .profile-details {
+          padding: 2.5rem 2rem;
+        }
+
+        .details-content {
+          padding: 0;
+        }
+
         footer {
           flex-direction: row;
           justify-content: center;
@@ -770,7 +787,7 @@
 
       @media (min-width: 1280px) {
         .content-grid {
-          grid-template-columns: 3fr 1fr;
+          grid-template-columns: 5fr 2fr;
         }
       }
 
@@ -956,29 +973,30 @@
         <div class="view-profile" id="view-profile">
           <button type="button" id="profile-back">← Takaisin etusivulle</button>
           <div class="profile-details">
-            <h2>Riikka Syvähuoko</h2>
+            <div class="details-content">
+              <h2>Riikka Syvähuoko</h2>
 
-            <h3>Koulutus</h3>
-            <ul>
-              <li>
-                Vyöhyketerapeutti, Medika Nova Oy 2012-2014, 8-tasoinen
-                Refleksologia
-              </li>
-              <li>Jalkojenhoidon AT</li>
-              <li>Ravintolakokki</li>
-              <li>YO-merkonomi</li>
-              <li>Varhaiskasvatuksen lastenhoitaja</li>
-              <li>Palvelen myös englanniksi ja ruotsiksi</li>
-            </ul>
+              <h3>Koulutus</h3>
+              <ul>
+                <li>
+                  Vyöhyketerapeutti, Medika Nova Oy 2012-2014, 8-tasoinen
+                  Refleksologia
+                </li>
+                <li>Jalkojenhoidon AT</li>
+                <li>Ravintolakokki</li>
+                <li>YO-merkonomi</li>
+                <li>Varhaiskasvatuksen lastenhoitaja</li>
+                <li>Palvelen myös englanniksi ja ruotsiksi</li>
+              </ul>
 
-            <h3>Muut palvelut</h3>
-            <ul>
-              <li>Kotisiivoukset ja kaupassa käynnit</li>
-              <li>Avustavat tietokonetyöt</li>
-              <li>Catering- ja juhlajärjestelyt, myös stailaus</li>
-              <li>Lastenhoito</li>
-            </ul>
-
+              <h3>Muut palvelut</h3>
+              <ul>
+                <li>Kotisiivoukset ja kaupassa käynnit</li>
+                <li>Avustavat tietokonetyöt</li>
+                <li>Catering- ja juhlajärjestelyt, myös stailaus</li>
+                <li>Lastenhoito</li>
+              </ul>
+            </div>
             <div class="business-card">
               <div class="card-background"></div>
               <div class="card-overlay"></div>
